@@ -1,0 +1,23 @@
+# coding=utf-8
+import re
+import chardet
+import requests
+import json
+from pprint import pprint
+ 
+url = 'https://kyfw.12306.cn/otn/resources/js/framework/station_name.js?station_version=1.9035'
+response = requests.get(url, verify=False)
+#print response.text
+a= response.text.encode('utf-8')
+a= response.text
+stations = re.findall(u'([\u4e00-\u9fa5]+)\|([A-Z]+)', response.text)
+
+tmp = json.dumps(stations,encoding='UTF-8',ensure_ascii=False)
+c = re.findall(u'([\u4e00-\u9fa5]+)\|([A-Z]+)',response.text)
+#print response.text
+print a
+print type(respnse.text)
+#print type(stations)
+#pprint(stations, indent=4)
+
+
